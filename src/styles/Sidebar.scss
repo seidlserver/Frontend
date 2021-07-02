@@ -1,0 +1,17 @@
+.sidebar{
+    margin: 0;
+    width: 5rem;
+    height: 100vw;
+    background-color: red;
+    transition: 200ms ease;
+
+    .sidebar-content{
+        list-style-type: none;
+        .sidebar-item{
+        }
+    }
+}
+
+.sidebar:hover{
+    width: 15rem;
+}

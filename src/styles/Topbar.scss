@@ -1,0 +1,17 @@
+@import "var";
+
+.topbar{
+    padding: 5px;
+    background-color: $black;
+    display: flex;
+    justify-content: center;
+    img{
+        width: 35rem;
+    }
+}
+
+@media screen and (max-width: $small){
+    .topbar{
+        display: none;
+    }
+}
