@@ -11,9 +11,9 @@ function Layout({children}:LayoutProps){
     return(
         <>
             <Topbar/>
-            <div className="bottom">
+            <div className="main">
                 <Sidebar/>
-                <div className="main">
+                <div className="main-content">
                     {children}
                 </div>
             </div>
