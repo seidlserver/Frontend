@@ -1,16 +1,29 @@
 import React from 'react';
 import '../styles/StateOperator.scss';
 import { useState, useEffect } from "react";
-import socketIOClient from "socket.io-client";
+import SockJS from 'sockjs-client';
+import StompJS from 'stompjs';
 
 function StateOperator(){
-
     useEffect(() =>{
-        const socket = socketIOClient("http://127.0.0.1:8080/")
-        socket.on("server/status", )
+        
     }, [])
+
+    const connect = () =>{
+        const socket = new SockJS('http://localhost:8080/endpoint');
+        var stompClient = StompJS.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/server/state', function (state) {
+                console.log(state);
+            });
+        });
+    }
+
     return(
-        <div></div>
+        <button onClick={connect}>
+            Socket
+        </button>
     );
 }
 
