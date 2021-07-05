@@ -11,7 +11,7 @@ export interface StateMessage{
 
 var socket: WebSocket;
 var client: StompJS.Client;
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZWlqb2QxN0BodGwta2FpbmRvcmYuYXQiLCJleHAiOjE2MjU0NzM0OTB9.v3izQU-LRzW8c8CU10T8kJ3GG0vkG7YHqLNlOR74wkszWyEpvQbZAknDdpbRaagAbLD1iG02doxiCqw01oxCFQ';
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiaWJlbEBydW5kZS5sbWJvIiwiZXhwIjoxNjI1NTc0Njc3fQ.6Eki4FeOmZuJuPik0Kf8NfGTi33FgolHkoYBSds8NXMZsj5A9hfMyAPx65XP-5zggT5LCSucR6P4pHeRWdF_3Q';
 
 function StateOperator(){
     const [state, setState] = useState<"UP" | "DOWN" | "UNKNOWN">("UNKNOWN");
@@ -22,7 +22,7 @@ function StateOperator(){
     }, [])
 
     const connect = () =>{
-        socket = new SockJS('http://localhost:8080/endpoint?token='+token);
+        socket = new SockJS(process.env.REACT_APP_BASE_URL+'endpoint?token='+token);
         client = StompJS.over(socket);
         client.connect({}, () => {
             setConnected(true);

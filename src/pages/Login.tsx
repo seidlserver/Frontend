@@ -8,16 +8,19 @@ const api = axios.create({
 });
 
 function Login() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('bibel@runde.lmbo')
+    const [password, setPassword] = useState('lmbo')
 
-    const performLogin = () =>{
+    const performLogin = (e: any) =>{
+        e.preventDefault();
         api.post('/auth/login', {
-            'email':email,
-            'password':password
+            'email': email,
+            'password': password
         }).then(res => {
+            console.log(res);
             localStorage.setItem("jwt", res.data);
         }).catch((err) => {
+            console.log(err)
             alert("Login failed");
         })
     }
